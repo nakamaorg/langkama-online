@@ -1,0 +1,11 @@
+@use '../utils/color';
+
+
+
+$color-primary: #654187;
+$color-primary-rgb: color.colorToRgb($color-primary);
+$color-primary-hsl: color.colorToHsl($color-primary);
+
+$color-secondary: #dddbf1;
+$color-secondary-rgb: color.colorToRgb($color-secondary);
+$color-secondary-hsl: color.colorToHsl($color-secondary);

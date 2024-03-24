@@ -1,0 +1,32 @@
+@use '../vars/font' as vars;
+@use '../utils/font' as utils;
+
+
+
+:root {
+  @include utils.loadFont;
+
+  --font-weight-bold: #{vars.$font-weight-bold};
+  --font-weight-light: #{vars.$font-weight-light};
+  --font-weight-regular: #{vars.$font-weight-regular};
+
+  --line-height: 1.6;
+  --font-family-primary: #{vars.$font-primary};
+}
+
+body {
+  color: var(--color-text);
+  line-height: var(--line-height);
+
+  font-size: 16px;
+  text-rendering: optimizeLegibility;
+  font-weight: var(--font-weight-light);
+  font-family: var(--font-family-primary);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*::selection {
+  background-color: hsl(var(--color-primary-hsl), 85%);
+}

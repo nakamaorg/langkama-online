@@ -1,0 +1,7 @@
+@function colorToRgb($color) {
+  @return red($color), green($color), blue($color);
+}
+
+@function colorToHsl($color) {
+  @return hue($color), saturation($color);
+}

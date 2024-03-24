@@ -1,0 +1,17 @@
+@use '../vars/color';
+
+
+
+:root {
+  --color-primary: #{color.$color-primary};
+  --color-primary-rgb: #{color.$color-primary-rgb};
+  --color-primary-hsl: #{color.$color-primary-hsl};
+
+  --color-secondary: #{color.$color-secondary};
+  --color-secondary-rgb: #{color.$color-secondary-rgb};
+  --color-secondary-hsl: #{color.$color-secondary-hsl};
+
+  --color-text: var(--color-primary);
+  --color-text-rgb: var(--color-primary-rgb);
+  --color-text-hsl: var(--color-primary-hsl);
+}

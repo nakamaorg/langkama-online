@@ -11,6 +11,12 @@ export type TAppStore = {
 
   /**
    * @description
+   * Whether the code is being interpreted at the moment
+   */
+  interpreting: boolean
+
+  /**
+   * @description
    * The source code
    */
   code: string

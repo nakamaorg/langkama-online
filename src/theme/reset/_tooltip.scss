@@ -1,0 +1,11 @@
+.p-tooltip {
+  font-size: 14px;
+
+  .p-tooltip-arrow {
+    border-bottom-color: hsl(var(--color-primary-hsl), 60%);
+  }
+
+  .p-tooltip-text {
+    background-color: hsl(var(--color-primary-hsl), 60%);
+  }
+}

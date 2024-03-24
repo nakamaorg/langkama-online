@@ -56,8 +56,8 @@ function run(e: MouseEvent): void {
           <Button v-tooltip.bottom="'Clear'" :disabled="isEmpty()" icon="pi pi-delete-left" severity="secondary"
             aria-label="New" @click="clear" />
 
-          <Button v-tooltip.bottom="'Run'" :disabled="isEmpty()" icon="pi pi-play" aria-label="Interpret"
-            @click="run" />
+          <Button v-tooltip.bottom="'Run'" :disabled="isEmpty()" :loading="store.interpreting" icon="pi pi-play"
+            aria-label="Interpret" class="run" @click="run" />
         </div>
       </template>
     </Menubar>
@@ -95,6 +95,15 @@ function run(e: MouseEvent): void {
     }
 
     &__end {
+      .run {
+        border-color: var(--color-primary);
+        background-color: var(--color-primary);
+
+        &:hover {
+          background-color: hsl(var(--color-primary-hsl), 30%);
+        }
+      }
+
       >* {
         margin-left: 10px;
       }

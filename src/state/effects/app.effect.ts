@@ -25,6 +25,7 @@ export function initAppEffect() {
             .on(LangKamaEvent.Stdout, (stdout: string) => {
               if (!halt) {
                 const now = performance.now() - snapshot;
+
                 store.log({ time: now, type: LogType.Out, message: stdout });
                 snapshot = performance.now();
               }
@@ -35,8 +36,8 @@ export function initAppEffect() {
               if (!halt) {
                 halt = true;
                 const now = performance.now() - snapshot;
-                store.log({ time: now, type: LogType.Error, message: error.toString() });
-                store.setStatus(LogType.Error, `[ERROR] ${error.name}`);
+
+                store.onError(now, error);
                 snapshot = performance.now();
               }
             })
@@ -44,12 +45,32 @@ export function initAppEffect() {
             .on(LangKamaEvent.Success, () => {
               if (!halt) {
                 const now = performance.now() - snapshot;
-                store.log({ time: now, type: LogType.Info, message: 'LangKama script interpreted successfully' })
-                store.setStatus(LogType.Info, '[Info] LangKama script interpreted successfully');
+
+                store.onSuccess(now);
                 snapshot = performance.now();
               }
             })
             .interpret(store.code);
+
+          break;
+        }
+
+        case 'onSuccess': {
+          const [time] = args;
+
+          store.log({ time, type: LogType.Info, message: 'LangKama script interpreted successfully' });
+          store.setStatus(LogType.Info, '[Info] LangKama script interpreted successfully');
+
+          break;
+        }
+
+        case 'onError': {
+          const [time, error] = args;
+
+          store.log({ time: time, type: LogType.Error, message: error.toString() });
+          store.setStatus(LogType.Error, `[ERROR] ${error.name}`);
+
+          break;
         }
       }
     });

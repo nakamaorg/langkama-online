@@ -12,6 +12,7 @@ jobs:
     - id: Build-Vue
       uses: eoussama/vue-pages-action@0.0.2
       with:
+        usepnpm: true
         username: 'nakamaorg'
         reponame: 'langkama-online'
         token: ${{ secrets.GITHUB_TOKEN }}

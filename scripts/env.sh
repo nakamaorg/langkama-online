@@ -1,2 +1,2 @@
 #!/bin/sh
-sed -i "s|GH_PERSONAL_ACCESS_TOKEN|$GH_PERSONAL_ACCESS_TOKEN|g" .npmrc
+echo //npm.pkg.github.com/:_authToken="$GH_PERSONAL_ACCESS_TOKEN" >> .npmrc

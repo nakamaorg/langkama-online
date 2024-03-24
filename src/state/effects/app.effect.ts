@@ -36,6 +36,7 @@ export function initAppEffect() {
                 halt = true;
                 const now = performance.now() - snapshot;
                 store.log({ time: now, type: LogType.Error, message: error.toString() });
+                store.setStatus(LogType.Error, `[ERROR] ${error.name}`);
                 snapshot = performance.now();
               }
             })
@@ -44,6 +45,7 @@ export function initAppEffect() {
               if (!halt) {
                 const now = performance.now() - snapshot;
                 store.log({ time: now, type: LogType.Info, message: 'LangKama script interpreted successfully' })
+                store.setStatus(LogType.Info, '[Info] LangKama script interpreted successfully');
                 snapshot = performance.now();
               }
             })

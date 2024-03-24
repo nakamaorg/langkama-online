@@ -4,8 +4,6 @@ import { VueMonacoEditor } from '@guolao/vue-monaco-editor';
 import { useAppStore } from '@/state/stores/app.store';
 
 const MONACO_EDITOR_OPTIONS = {
-  formatOnType: true,
-  formatOnPaste: true,
   automaticLayout: true
 };
 

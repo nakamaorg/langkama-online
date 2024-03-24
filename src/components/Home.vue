@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Foot from './Foot.vue';
 import Head from './Head.vue';
 import Editor from './Editor.vue';
 import Console from './Console.vue';
@@ -19,6 +20,10 @@ import Console from './Console.vue';
       <div class="console">
         <Console />
       </div>
+    </div>
+
+    <div class="foot">
+      <Foot />
     </div>
   </div>
 </template>

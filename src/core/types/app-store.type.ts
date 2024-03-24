@@ -1,4 +1,5 @@
-import type { TLog } from './log.type'
+import type { TLog } from './log.type';
+import type { TNullable } from './nullable.type';
 
 
 
@@ -19,4 +20,10 @@ export type TAppStore = {
    * Logging messages
    */
   logs: Array<TLog>
+
+  /**
+   * @description
+   * The status of the app
+   */
+  status: TNullable<TLog>
 }

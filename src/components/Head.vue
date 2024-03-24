@@ -11,6 +11,9 @@ const store = useAppStore();
 const config = reactive({ ...__CONFIG__ });
 
 
+function isEmpty(): boolean {
+  return store.code.trim().length === 0;
+}
 
 function onSourceCode(e: MouseEvent): void {
   e.stopPropagation();
@@ -49,9 +52,12 @@ function run(e: MouseEvent): void {
         <div class="nav__end">
           <Button v-tooltip.bottom="'Source Code'" icon="pi pi-github" severity="secondary" aria-label="New"
             @click="onSourceCode" />
-          <Button v-tooltip.bottom="'Clear'" icon="pi pi-delete-left" severity="secondary" aria-label="New"
-            @click="clear" />
-          <Button v-tooltip.bottom="'Run'" icon="pi pi-play" aria-label="Interpret" @click="run" />
+
+          <Button v-tooltip.bottom="'Clear'" :disabled="isEmpty()" icon="pi pi-delete-left" severity="secondary"
+            aria-label="New" @click="clear" />
+
+          <Button v-tooltip.bottom="'Run'" :disabled="isEmpty()" icon="pi pi-play" aria-label="Interpret"
+            @click="run" />
         </div>
       </template>
     </Menubar>

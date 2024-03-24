@@ -1,31 +1,15 @@
 import { defineStore } from 'pinia';
-import type { TLog } from './../../core/types/log.type';
+import type { TLog } from '@/core/types/log.type';
+import type { LogType } from '@/core/enums/log-type.enum';
 import type { TAppStore } from '@/core/types/app-store.type';
 
 
 
 export const useAppStore = defineStore('app', {
   state: (): TAppStore => ({
-    code: `
-let me cook factorial(n) {
-  hear me out val is 0;
-
-  big if true (n = 0) {
-    val is 1;
-  } sike {
-    val is n * factorial(n - 1);
-  }
-
-  reda val;
-}
-
-a sa7 hear me out num is 10;
-a sa7 hear me out result is factorial(num);
-loncina(bait(num) + "! =", result); bs Outputs: 120
-
-reda result;
-    `,
-    logs: []
+    code: '',
+    logs: [],
+    status: null
   }),
 
   actions: {
@@ -38,6 +22,17 @@ reda result;
      */
     log(logMsg: TLog): void {
       this.logs.push(logMsg);
+    },
+
+    /**
+     * @description
+     * Updates the app's status
+     *
+     * @param type The type of the status
+     * @param message The message of the status
+     */
+    setStatus(type: LogType, message: string): void {
+      this.status = { time: 0, type, message };
     },
 
     /**

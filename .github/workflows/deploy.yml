@@ -6,13 +6,17 @@ on:
 jobs:
   build_vue:
     runs-on: ubuntu-latest
-    name: App Build
     steps:
-    - uses: actions/checkout@v1
-    - id: Build-Vue
+
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Enabeling pnpm
       run: |
         corepack enable
         pnpm install
+
+    - id: Build-Vue
       uses: eoussama/vue-pages-action@0.0.2
       with:
         usepnpm: true

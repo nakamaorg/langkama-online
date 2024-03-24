@@ -1,7 +1,3 @@
-import type { Theme } from '@/utils/enums/theme.enum';
-
-
-
 /**
  * @description
  * The app store structure

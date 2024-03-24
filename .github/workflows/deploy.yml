@@ -18,10 +18,6 @@ jobs:
     - name: Environment
       run: |
         ./scripts/env.sh
-        echo ".npmrc"
-        cat .npmrc
-        echo "$ACCESS_TOKEN"
-        echo $ACCESS_TOKEN | base64
 
     - name: Enabeling pnpm
       run: |

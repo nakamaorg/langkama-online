@@ -48,7 +48,7 @@ export class EditorHelper {
           [/\".*?\"/, 'string'],
           [/\b\d+(\.\d+)?\b/, 'number'],
           [/\b(W|L)\b/, 'constant.language.boolean'],
-          [/\b(is|sike|jk|big if true|let me cook|reda|cook until|hear me out|a sa7 hear me out)\b/, 'keyword'],
+          [/\b(is|sike|bruh|jk|big if true|let me cook|reda|cook until|hear me out|a sa7 hear me out)\b/, 'keyword'],
         ]
       }
     });

@@ -20,24 +20,20 @@ export function initAppEffect() {
           let snapshot = performance.now();
 
           interpreter
-
-            // @ts-ignore
-            .on(LangKamaEvent.Stdout, (stdout: string) => {
+            .on(LangKamaEvent.Stdout, (stdout: unknown) => {
               if (!halt) {
                 const now = performance.now() - snapshot;
 
-                store.log({ time: now, type: LogType.Out, message: stdout });
+                store.log({ time: now, type: LogType.Out, message: stdout as string });
                 snapshot = performance.now();
               }
             })
-
-            // @ts-ignore
-            .on(LangKamaEvent.Error, (error: LangKamaError) => {
+            .on(LangKamaEvent.Error, (error: unknown) => {
               if (!halt) {
                 halt = true;
                 const now = performance.now() - snapshot;
 
-                store.onError(now, error);
+                store.onError(now, error as LangKamaError);
                 snapshot = performance.now();
               }
             })

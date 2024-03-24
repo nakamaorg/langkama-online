@@ -9,8 +9,8 @@ dependencies:
     specifier: ^1.5.1
     version: 1.5.1(monaco-editor@0.47.0)(vue@3.4.21)
   '@nakamaorg/langkama':
-    specifier: 0.1.5
-    version: 0.1.5
+    specifier: 0.1.6
+    version: 0.1.6
   monaco-themes:
     specifier: ^0.4.4
     version: 0.4.4
@@ -1590,8 +1590,8 @@ packages:
       state-local: 1.0.7
     dev: false
 
-  /@nakamaorg/langkama@0.1.5:
-    resolution: {integrity: sha512-37Z3ROCJEWA0ESfIRv288lfjorfsr/zSf4LLJ3+wEWtzUWjHqXQh6QVW4vw8lqB4cPyFTgZ8MYskDE3+GBkeAQ==, tarball: https://npm.pkg.github.com/download/@nakamaorg/langkama/0.1.5/a6b174eca70b2316f80cabf9ae4ab2da915669c0}
+  /@nakamaorg/langkama@0.1.6:
+    resolution: {integrity: sha512-fuOxjSuiMhztFGcTgk1rqreXS/29xetKdktq3LCNExegqBszVtzqeOLLlWBQ1OUpUOs4yUpA8lJvAxhycD5SvA==, tarball: https://npm.pkg.github.com/download/@nakamaorg/langkama/0.1.6/85c25070b6ca270bda91cf146ea019873ea6f683}
     hasBin: true
     dependencies:
       chalk: 5.3.0

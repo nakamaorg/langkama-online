@@ -16,8 +16,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Environment
-      run: |
-        ./scripts/env.sh
+      run: ./scripts/env.sh
 
     - name: Enabeling pnpm
       run: |

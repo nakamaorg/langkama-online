@@ -1,27 +1,30 @@
-<template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
-</template>
+<script setup lang="ts">
+import { reactive } from 'vue';
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
-
-export default defineComponent({
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+const config = reactive({
+  ...__CONFIG__
 });
+
 </script>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<template>
+  <div class="root">
+    <header>
+      <img src="/imgs/logo/logo.png" alt="Nakama Realm Logo">
+
+      <h1>LangKama Online {{ config.version }}</h1>
+    </header>
+
+    <main>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita vel maxime repudiandae vitae quae. Pariatur unde
+      minus recusandae ducimus beatae aperiam esse deserunt tempore rem, omnis aut saepe! Dolore, eum.
+    </main>
+  </div>
+</template>
+
+<style scoped>
+.root {
+  width: 100%;
+  height: 100%;
 }
 </style>

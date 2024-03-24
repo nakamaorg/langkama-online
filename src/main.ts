@@ -1,6 +1,10 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import './registerServiceWorker'
-import store from './store'
+import './theme/main.scss';
 
-createApp(App).use(store).mount('#app')
+import { createApp } from 'vue';
+import { createPinia } from 'pinia';
+
+import App from './App.vue';
+
+createApp(App)
+  .use(createPinia())
+  .mount('#app');

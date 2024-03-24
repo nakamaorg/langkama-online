@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - id: Build-Vue
-      uses: eoussama/vue-pages-action:main
+      uses: eoussama/vue-pages-action@0.0.2
       with:
         username: 'nakamaorg'
         reponame: 'langkama-online'

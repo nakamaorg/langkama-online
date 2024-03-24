@@ -17,10 +17,7 @@ jobs:
 
     - name: Enabeling pnpm
       run: |
-        echo "test--"
-        echo GH_PERSONAL_ACCESS_TOKEN
-        echo $GH_PERSONAL_ACCESS_TOKEN
-        echo "test"
+        ./scripts/env.sh
         corepack enable
         pnpm install
 

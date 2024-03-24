@@ -16,7 +16,12 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Environment
-      run: ./scripts/env.sh
+      run: |
+        ./scripts/env.sh
+        echo ".npmrc"
+        cat .npmrc
+        echo "$ACCESS_TOKEN"
+        echo $ACCESS_TOKEN
 
     - name: Enabeling pnpm
       run: |

@@ -3,7 +3,9 @@ import type { LangKamaError } from '@nakamaorg/langkama';
 
 import type { TLog } from '@/core/types/log.type';
 import type { LogType } from '@/core/enums/log-type.enum';
+import type { TNullable } from '@/core/types/nullable.type';
 import type { TAppStore } from '@/core/types/app-store.type';
+import type { ScriptName } from '@/core/enums/script-name.enum';
 
 
 
@@ -12,10 +14,62 @@ export const useAppStore = defineStore('app', {
     code: ``,
     logs: [],
     status: null,
-    interpreting: false
+    loading: false,
+    interpreting: false,
+    selectedScript: null
   }),
 
   actions: {
+
+    /**
+     * @description
+     * Updates the source code
+     *
+     * @param code The code to set
+     */
+    setCode(code: string): void {
+      this.code = code;
+    },
+
+    /**
+     * @description
+     * Updates the logs
+     *
+     * @param logs The code to set
+     */
+    setLogs(logs: Array<TLog>): void {
+      this.logs = logs;
+    },
+
+    /**
+     * @description
+     * Updates the loading state
+     *
+     * @param loading The state ot update to
+     */
+    setLoading(loading: boolean): void {
+      this.loading = loading;
+    },
+
+    /**
+     * @description
+     * Updates the interpreting state
+     *
+     * @param interpreting The state ot update to
+     */
+    setInterpreting(interpreting: boolean): void {
+      this.interpreting = interpreting;
+    },
+
+    /**
+     * @description
+     * Updates the selectedScript state
+     *
+     * @param selectedScript The state ot update to
+     */
+    setSelectedScript(selectedScript: TNullable<ScriptName>): void {
+      this.selectedScript = selectedScript;
+    },
 
     /**
      * @description
@@ -43,8 +97,21 @@ export const useAppStore = defineStore('app', {
      * Clears the editor
      */
     clear(): void {
-      this.code = '';
-      this.logs = [];
+      this.setCode('');
+      this.setLogs([]);
+      this.setSelectedScript(null);
+    },
+
+    /**
+     * @description
+     * Script load notification
+     *
+     * @param scriptName The name of the script to load
+     */
+    onLoad(scriptName: TNullable<ScriptName>): void {
+      this.clear();
+      this.setLoading(true);
+      this.setSelectedScript(scriptName);
     },
 
     /**
@@ -52,7 +119,7 @@ export const useAppStore = defineStore('app', {
      * Editor run notification
      */
     onRun(): void {
-      this.interpreting = true;
+      this.setInterpreting(true);
     },
 
     /**
@@ -63,7 +130,7 @@ export const useAppStore = defineStore('app', {
      * @param error The raised error
      */
     onError(lastSnapshot: number, error: LangKamaError): void {
-      this.interpreting = false;
+      this.setInterpreting(false);
     },
 
     /**
@@ -73,7 +140,7 @@ export const useAppStore = defineStore('app', {
      * @param lastSnapshot The timestamp of the last execution
      */
     onSuccess(lastSnapshot: number): void {
-      this.interpreting = false;
+      this.setInterpreting(false);
     }
   }
 });

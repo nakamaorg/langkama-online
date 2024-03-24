@@ -1,5 +1,6 @@
 import type { TLog } from './log.type';
 import type { TNullable } from './nullable.type';
+import type { ScriptName } from '../enums/script-name.enum';
 
 
 
@@ -14,6 +15,12 @@ export type TAppStore = {
    * Whether the code is being interpreted at the moment
    */
   interpreting: boolean
+
+  /**
+   * @description
+   * Whether the code is being loaded at the moment
+   */
+  loading: boolean
 
   /**
    * @description
@@ -32,4 +39,10 @@ export type TAppStore = {
    * The status of the app
    */
   status: TNullable<TLog>
+
+  /**
+   * @description
+   * The selected script
+   */
+  selectedScript: TNullable<ScriptName>
 }

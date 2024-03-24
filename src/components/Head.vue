@@ -1,20 +1,38 @@
 <script setup lang="ts">
-import { reactive } from 'vue';
+import { ref, reactive } from 'vue';
 
 import Tag from 'primevue/tag';
 import Button from 'primevue/button';
 import Menubar from 'primevue/menubar';
+import Dropdown from 'primevue/dropdown';
 
 import { useAppStore } from '@/state/stores/app.store';
+import { EnumHelper } from '@/core/helpers/enum.helper';
+import { ScriptName } from '@/core/enums/script-name.enum';
 import { NavigationHelper } from '@/core/helpers/navigation.helper';
 
 
 
 const store = useAppStore();
 const config = reactive({ ...__CONFIG__ });
+const names = ref(EnumHelper.getNames(ScriptName).map(e => ({ label: e, value: ScriptName[e] })));
 
+/**
+ * @description
+ * Checks if the editor has no content
+ */
 function isEmpty(): boolean {
-  return store.code.trim().length === 0;
+  return store.code.trim().length === 0 || store.loading;
+}
+
+/**
+ * @description
+ * Triggers script loading
+ *
+ * @param e The event object
+ */
+function onChange(e: { value: ScriptName }): void {
+  store.onLoad(e.value);
 }
 
 /**
@@ -81,6 +99,9 @@ function run(e: MouseEvent): void {
 
       <template #end>
         <div class="nav__end">
+          <Dropdown v-model:model-value="store.selectedScript" :loading="store.loading" :options="names"
+            option-label="label" option-value="value" placeholder="Load Script" @change="onChange" />
+
           <Button v-tooltip.bottom="'Learn LangKama'" icon="pi pi-book" severity="secondary" label="ㅤDocumentation"
             aria-label="Documentation" @click="onDocumentation" />
 

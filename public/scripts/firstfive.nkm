@@ -1,0 +1,20 @@
+hear me out numsFound is 0.
+a sa7 hear me out minNum is 0.
+a sa7 hear me out maxNum is 100.
+a sa7 hear me out evenNums is 5.
+hear me out i is minNum.
+
+loncina("The first", evenNums, "even numbers from ", minNum, "to ", bait(maxNum) + ":").
+
+cook until (i > maxNum) {
+  big if true (numsFound = evenNums) {
+    i is maxNum + 1.
+  }
+
+  big if true ((i % 2) = 0) {
+    loncina(i).
+    numsFound is numsFound + 1.
+  }
+
+  i is i + 1.
+}

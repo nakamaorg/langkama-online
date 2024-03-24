@@ -1,6 +1,9 @@
+import pkg from './../../../package.json';
 import { useAppStore } from '../stores/app.store';
 import { LogType } from '@/core/enums/log-type.enum';
 import { LangKama, LangKamaError, LangKamaEvent } from '@nakamaorg/langkama';
+import { EnumHelper } from '@/core/helpers/enum.helper';
+import { ScriptName } from '@/core/enums/script-name.enum';
 
 
 
@@ -12,8 +15,9 @@ export function initAppEffect() {
   const appStore = useAppStore();
   const interpreter = new LangKama();
 
+
   appStore.$onAction(({ name, store, after, args }) => {
-    after(() => {
+    after(async () => {
       switch (name) {
         case 'onRun': {
           let halt: boolean = false;
@@ -38,7 +42,7 @@ export function initAppEffect() {
               }
             })
 
-            .on(LangKamaEvent.Success, () => {
+            .on(LangKamaEvent.Success, (result: unknown) => {
               if (!halt) {
                 const now = performance.now() - snapshot;
 
@@ -66,6 +70,16 @@ export function initAppEffect() {
           store.log({ time: time, type: LogType.Error, message: error.toString() });
           store.setStatus(LogType.Error, `[ERROR] ${error.name}`);
 
+          break;
+        }
+
+        case 'onLoad': {
+          const fileName = EnumHelper.getName(ScriptName, store.selectedScript as ScriptName);
+          const filePath = `${pkg.name}/scripts/${fileName?.toLowerCase()}.nkm`;
+          const code = await fetch(filePath).then(e => e.text());
+
+          store.setCode(code as string);
+          store.setLoading(false);
           break;
         }
       }

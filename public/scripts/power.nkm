@@ -1,0 +1,13 @@
+let me cook power(a, b) {
+  hear me out result is 1.
+  hear me out index is 0.
+
+  cook until (index + 1 > b) {
+    result is result * a.
+    index is index + 1.
+  }
+
+  reda result.
+}
+
+loncina(power(2, 3)). bs Output: 8

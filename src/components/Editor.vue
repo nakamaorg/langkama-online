@@ -2,6 +2,7 @@
 import { useAppStore } from '@/state/stores/app.store';
 import { VueMonacoEditor } from '@guolao/vue-monaco-editor';
 
+import { ScriptName } from '@/core/enums/script-name.enum';
 import { EditorHelper } from '@/core/helpers/editor.helper.ts';
 
 
@@ -17,6 +18,7 @@ const options = EditorHelper.getConfig();
  */
 function onInit(_: unknown, monaco: any) {
   EditorHelper.registerLanguage(monaco);
+  store.onLoad(ScriptName.HelloWorld);
 }
 </script>
 

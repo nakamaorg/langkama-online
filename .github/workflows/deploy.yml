@@ -15,9 +15,11 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v4
 
+    - name: Environment
+      run: ./scripts/env.sh
+
     - name: Enabeling pnpm
       run: |
-        ./scripts/env.sh
         corepack enable
         pnpm install
 

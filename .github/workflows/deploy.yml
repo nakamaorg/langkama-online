@@ -10,6 +10,9 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - id: Build-Vue
+      run: |
+        corepack enable
+        pnpm install
       uses: eoussama/vue-pages-action@0.0.2
       with:
         usepnpm: true

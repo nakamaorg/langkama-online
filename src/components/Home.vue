@@ -7,15 +7,43 @@ import Console from './Console.vue';
 <template>
   <div class="root">
     <div class="head">
-      <Head />
+
+      <Head></Head>
     </div>
+
     <div class="body">
       <div class="editor">
         <Editor />
       </div>
+
       <div class="console">
         <Console />
       </div>
     </div>
   </div>
 </template>
+
+<style scoped lang="scss">
+.root {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  height: 100%;
+
+  .body {
+    flex: 1;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: row;
+
+    .editor,
+    .console {
+      flex: 1;
+    }
+  }
+}
+</style>

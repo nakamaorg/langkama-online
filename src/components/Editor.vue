@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, shallowRef } from 'vue';
 import { VueMonacoEditor } from '@guolao/vue-monaco-editor';
+import { useAppStore } from '@/state/stores/app.store';
 
 const MONACO_EDITOR_OPTIONS = {
   formatOnType: true,
@@ -8,8 +9,8 @@ const MONACO_EDITOR_OPTIONS = {
   automaticLayout: true
 };
 
+const store = useAppStore();
 const editorRef = shallowRef();
-const code = ref('// some code...');
 const handleMount = (editor: any) => (editorRef.value = editor);
 
 function formatCode() {
@@ -18,5 +19,5 @@ function formatCode() {
 </script>
 
 <template>
-  <vue-monaco-editor v-model:value="code" theme="vs-dark" :options="MONACO_EDITOR_OPTIONS" @mount="handleMount" />
+  <vue-monaco-editor v-model:value="store.code" theme="vs-dark" :options="MONACO_EDITOR_OPTIONS" @mount="handleMount" />
 </template>

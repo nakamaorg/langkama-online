@@ -2,12 +2,15 @@
 import { reactive } from 'vue';
 
 import Tag from 'primevue/tag';
-import Image from 'primevue/image';
 import Button from 'primevue/button';
 import Menubar from 'primevue/menubar';
-import Tooltip from 'primevue/tooltip';
 
+import { useAppStore } from './../state/stores/app.store';
+
+const store = useAppStore();
 const config = reactive({ ...__CONFIG__ });
+
+
 
 function onSourceCode(e: MouseEvent): void {
   e.stopPropagation();
@@ -16,10 +19,12 @@ function onSourceCode(e: MouseEvent): void {
 
 function clear(e: MouseEvent): void {
   e.stopPropagation();
+  store.clear();
 }
 
 function run(e: MouseEvent): void {
   e.stopPropagation();
+  store.onRun();
 }
 </script>
 

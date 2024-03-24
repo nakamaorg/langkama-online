@@ -5,26 +5,46 @@ import Tag from 'primevue/tag';
 import Button from 'primevue/button';
 import Menubar from 'primevue/menubar';
 
-import { useAppStore } from './../state/stores/app.store';
+import { useAppStore } from '@/state/stores/app.store';
+import { NavigationHelper } from '@/core/helpers/navigation.helper';
+
+
 
 const store = useAppStore();
 const config = reactive({ ...__CONFIG__ });
-
 
 function isEmpty(): boolean {
   return store.code.trim().length === 0;
 }
 
+/**
+ * @description
+ * Navigates user to source code
+ *
+ * @param e The mouse click event object
+ */
 function onSourceCode(e: MouseEvent): void {
   e.stopPropagation();
-  window.open('https://github.com/nakamaorg/langkama-online', '_blank');
+  NavigationHelper.open('https://github.com/nakamaorg/langkama-online');
 }
 
+/**
+ * @description
+ * Clears the editor and logging console
+ *
+ * @param e The mouse click event object
+ */
 function clear(e: MouseEvent): void {
   e.stopPropagation();
   store.clear();
 }
 
+/**
+ * @description
+ * Runs the interpreter
+ *
+ * @param e The mouse click event object
+ */
 function run(e: MouseEvent): void {
   e.stopPropagation();
   store.onRun();

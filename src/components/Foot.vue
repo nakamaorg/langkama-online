@@ -6,16 +6,29 @@ import { EnumHelper } from '@/core/helpers/enum.helper';
 import Button from 'primevue/button';
 import { version } from '@nakamaorg/langkama';
 import type { TUnsafe } from '@/core/types/unsafe.type';
+import { NavigationHelper } from '@/core/helpers/navigation.helper';
 
 
 
 const store = useAppStore();
 
+/**
+ * @description
+ * Navigates the user to KangKama source code
+ *
+ * @param e The mouse click event object
+ */
 function onLangKama(e: MouseEvent) {
   e.stopPropagation();
-  window.open('https://github.com/nakamaorg/langkama', '_blank');
+  NavigationHelper.open('https://github.com/nakamaorg/langkama');
 }
 
+/**
+ * @description
+ * Gets the appropriate class name for a given log type
+ *
+ * @param type The type of the log
+ */
 function getClass(type: TUnsafe<LogType>): string {
   const name = EnumHelper.getName(LogType, type as any);
   return `left--${name?.toLowerCase()}`;

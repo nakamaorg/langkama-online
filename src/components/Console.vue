@@ -7,10 +7,22 @@ import { EnumHelper } from '@/core/helpers/enum.helper';
 
 const store = useAppStore();
 
+/**
+ * @description
+ * Formats the execusion time
+ *
+ * @param time The execusion time in milliseconds
+ */
 function getTime(time: number): string {
   return `${(time).toFixed(2)}ms`;
 }
 
+/**
+ * @description
+ * Gets the appropriate class name for a given log type
+ *
+ * @param type The type of the log
+ */
 function getClass(type: LogType): string {
   const name = EnumHelper.getName(LogType, type);
   return `log--${name?.toLowerCase()}`;

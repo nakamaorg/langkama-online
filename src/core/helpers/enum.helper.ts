@@ -3,12 +3,8 @@ import type { TUnsafe } from '../types/unsafe.type';
 
 
 /**
- * @category Helpers
- *
  * @description
  * Helps with enums.
- * 
- * @class EnumHelper
  */
 export class EnumHelper {
 

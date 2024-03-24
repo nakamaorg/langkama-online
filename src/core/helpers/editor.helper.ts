@@ -1,3 +1,10 @@
+import theme from 'monaco-themes/themes/Dracula.json';
+
+// Amy.json
+// Dracula.json
+// Nord.json
+
+
 /**
  * @description
  * Helps with the editor
@@ -21,20 +28,20 @@ export class EditorHelper {
    * @description
    * Register LangKama as a supported language
    *
-   * @param editor The editor instance
+   * @param monaco The editor instance
    */
-  static registerLanguage(editor: any): void {
-    editor.languages.register({
+  static registerLanguage(monaco: any): void {
+    monaco.languages.register({
       id: 'nkm',
       extensions: ['.nkm'],
       aliases: ['LangKama']
     });
 
-    editor.languages.setLanguageConfiguration('nkm', {
+    monaco.languages.setLanguageConfiguration('nkm', {
       comments: { lineComment: 'bs' },
     });
 
-    editor.languages.setMonarchTokensProvider('nkm', {
+    monaco.languages.setMonarchTokensProvider('nkm', {
       tokenizer: {
         root: [
           [/bs.*/, 'comment'],
@@ -46,11 +53,7 @@ export class EditorHelper {
       }
     });
 
-    editor.editor.defineTheme('mylang-theme', {
-      colors: {},
-      inherit: true,
-      base: this.getConfig().language,
-      rules: [{ token: 'keyword', foreground: '#000ed1', fontStyle: 'bold' }],
-    });
+    monaco.editor.defineTheme('monokai', theme);
+    monaco.editor.setTheme('monokai');
   }
 }

@@ -1,3 +1,3 @@
-# langkama-online
+# LangKama Online
 
-The online editor for LangKama.q
+The online editor for LangKama.

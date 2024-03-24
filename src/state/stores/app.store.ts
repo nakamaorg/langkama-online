@@ -9,18 +9,7 @@ import type { TAppStore } from '@/core/types/app-store.type';
 
 export const useAppStore = defineStore('app', {
   state: (): TAppStore => ({
-    code: `hear me out x is bruh;
-hear me out true is W;
-hear me out false is L;
-
-hear me out age is 30;
-hear me out minAge is 18;
-hear me out maxAge is 40;
-
-loncina("age(" + bait(age) + ") is 18: " + bait(age = 18) + ".");
-loncina("age(" + bait(age) + ") is not 18: " + bait(!(age = 18)) + ".");
-loncina("age(" + bait(age) + ") is greater than minAge(" + bait(minAge) + "): " + bait(age > minAge) + ".");
-loncina("age(" + bait(age) + ") is lower than maxAge(" + bait(maxAge) + "): " + bait(age < maxAge) + ".");`,
+    code: ``,
     logs: [],
     status: null,
     interpreting: false

@@ -61,7 +61,7 @@ function getClass(type: LogType): string {
 
       &__message {
         font-size: 14px;
-        font-family: var(--font-primary);
+        font-family: monospace;
       }
 
       &--error {

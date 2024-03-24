@@ -19,6 +19,17 @@ function isEmpty(): boolean {
 
 /**
  * @description
+ * Navigates user to LangKama documentation
+ *
+ * @param e The mouse click event object
+ */
+function onDocumentation(e: MouseEvent): void {
+  e.stopPropagation();
+  NavigationHelper.open('https://github.com/nakamaorg/langkama/wiki');
+}
+
+/**
+ * @description
  * Navigates user to source code
  *
  * @param e The mouse click event object
@@ -70,7 +81,10 @@ function run(e: MouseEvent): void {
 
       <template #end>
         <div class="nav__end">
-          <Button v-tooltip.bottom="'Source Code'" icon="pi pi-github" severity="secondary" aria-label="New"
+          <Button v-tooltip.bottom="'Learn LangKama'" icon="pi pi-book" severity="secondary" label="ㅤDocumentation"
+            aria-label="Documentation" @click="onDocumentation" />
+
+          <Button v-tooltip.bottom="'Source Code'" icon="pi pi-github" severity="secondary" aria-label="Source Code"
             @click="onSourceCode" />
 
           <Button v-tooltip.bottom="'Clear'" :disabled="isEmpty()" icon="pi pi-delete-left" severity="secondary"

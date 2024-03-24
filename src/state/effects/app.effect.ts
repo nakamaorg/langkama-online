@@ -1,9 +1,8 @@
-import pkg from './../../../package.json';
 import { useAppStore } from '../stores/app.store';
 import { LogType } from '@/core/enums/log-type.enum';
-import { LangKama, LangKamaError, LangKamaEvent } from '@nakamaorg/langkama';
 import { EnumHelper } from '@/core/helpers/enum.helper';
 import { ScriptName } from '@/core/enums/script-name.enum';
+import { LangKama, LangKamaError, LangKamaEvent } from '@nakamaorg/langkama';
 
 
 
@@ -75,7 +74,7 @@ export function initAppEffect() {
 
         case 'onLoad': {
           const fileName = EnumHelper.getName(ScriptName, store.selectedScript as ScriptName);
-          const filePath = `${pkg.name}/scripts/${fileName?.toLowerCase()}.nkm`;
+          const filePath = `scripts/${fileName?.toLowerCase()}.nkm`;
           const code = await fetch(filePath).then(e => e.text());
 
           store.setCode(code as string);

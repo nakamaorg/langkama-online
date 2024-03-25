@@ -30,7 +30,7 @@ function getClass(type: LogType): string {
 </script>
 
 <template>
-  <div class="root">
+  <div id="console-element" class="root">
     <ul class="logs">
       <li v-for="log in store.logs" class="log" :class="[getClass(log.type)]">
         <span class="log__time">[{{ getTime(log.time) }}]</span>

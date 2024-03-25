@@ -2,6 +2,7 @@ import { useAppStore } from '../stores/app.store';
 import { LogType } from '@/core/enums/log-type.enum';
 import { EnumHelper } from '@/core/helpers/enum.helper';
 import { ScriptName } from '@/core/enums/script-name.enum';
+import { ConsoleHelper } from '@/core/helpers/console.helper';
 import { LangKama, LangKamaError, LangKamaEvent } from '@nakamaorg/langkama';
 
 
@@ -57,6 +58,7 @@ export function initAppEffect() {
         case 'onSuccess': {
           const [time] = args;
 
+          ConsoleHelper.scroll();
           store.log({ time, type: LogType.Info, message: 'LangKama script interpreted successfully' });
           store.setStatus(LogType.Info, '[Info] LangKama script interpreted successfully');
 
@@ -66,6 +68,7 @@ export function initAppEffect() {
         case 'onError': {
           const [time, error] = args;
 
+          ConsoleHelper.scroll();
           store.log({ time: time, type: LogType.Error, message: error.toString() });
           store.setStatus(LogType.Error, `[ERROR] ${error.name}`);
 
@@ -79,6 +82,7 @@ export function initAppEffect() {
 
           store.setCode(code as string);
           store.setLoading(false);
+
           break;
         }
       }

@@ -23,6 +23,13 @@ function onInit(_: unknown, monaco: any) {
 </script>
 
 <template>
-  <vue-monaco-editor v-model:value="store.code" :language="options.language" :theme="options.theme" :options="options"
-    @mount="onInit" />
+  <vue-monaco-editor class="monaco" v-model:value="store.code" :language="options.language" :theme="options.theme"
+    :options="options" @mount="onInit" />
 </template>
+
+<style scoped lang="scss">
+.monaco {
+  width: 100%;
+  height: 100%;
+}
+</style>

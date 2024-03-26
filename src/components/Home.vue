@@ -37,10 +37,8 @@ import Console from './Console.vue';
   height: 100%;
 
   .body {
-    flex: 1;
-
     width: 100%;
-    height: 100%;
+    height: calc(100vh - 98px);
 
     display: flex;
     flex-direction: row;
@@ -48,6 +46,7 @@ import Console from './Console.vue';
     .editor,
     .console {
       flex: 1;
+      max-width: 50%;
     }
   }
 }

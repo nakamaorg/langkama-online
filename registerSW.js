@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/langkama-online/sw.js', { scope: '/langkama-online/' })})}
